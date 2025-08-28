@@ -8,19 +8,24 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Resume from './pages/Resume'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'projects', element: <Projects /> },
+        { path: 'about', element: <About /> },
+        { path: 'contact', element: <Contact /> },
+        { path: 'resume', element: <Resume /> },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { path: '', element: <Home /> },
-      { path: 'projects', element: <Projects /> },
-      { path: 'about', element: <About /> },
-      { path: 'contact', element: <Contact /> },
-      { path: 'resume', element: <Resume /> },
-    ],
-  },
-])
+    basename: '/my_portfolio',
+  }
+)
 
 function App() {
   return <RouterProvider router={router} />
